@@ -25,21 +25,28 @@ function prefetch(url) {
   }
 }
 
-const videoId = (window.location.search.match(/id=([^&]+)/) || [])[1];
-
-if (videoId) {
-  capiFetch(videoId, (err, item) => {
-    if (err) {
-      return console.error(err);
-    }
-    video.src = item.renditions[0].url;
-    thumbnail.title = item.captionPlain;
-  });
-}
-
+const videoId = (window.location.search.match(/id=(\d+)/) || [])[1];
 const target = (window.location.search.match(/originalLinkTarget=([^&]+)/) || [])[1];
+const isPreviewTarget = target && target.indexOf('nucwed') > -1;
+
+console.log(videoId, target, isPreviewTarget);
 
 if (target) {
   thumbnail.href = target;
   prefetch(target);
+}
+
+if (videoId) {
+  capiFetch(
+    videoId,
+    (err, item) => {
+      if (err) {
+        return console.error(err);
+      }
+      video.src = item.renditions[0].url;
+      thumbnail.title = item.captionPlain;
+    },
+    null,
+    isPreviewTarget
+  );
 }
