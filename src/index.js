@@ -34,8 +34,6 @@ if (videoId) {
     }
     video.src = item.renditions[0].url;
     thumbnail.title = item.captionPlain;
-    thumbnail.appendChild(video);
-    video.play();
   });
 }
 
