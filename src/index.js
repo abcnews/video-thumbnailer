@@ -41,8 +41,21 @@ if (videoId) {
       if (err) {
         return console.error(err);
       }
+
+      // Set video source
       video.src = item.renditions[0].url;
+
+      // Set title
       thumbnail.title = item.captionPlain;
+
+      // Set fallback image, in case device can't play video
+      if (item.thumbnailLink && item.thumbnailLink.media && item.thumbnailLink.media.length) {
+        const image = item.thumbnailLink.media.find(x => x.url.indexOf('16x9-large') > -1);
+
+        if (image) {
+          thumbnail.style.backgroundImage = `url(${image.url})`;
+        }
+      }
     },
     null,
     isPreviewTarget
