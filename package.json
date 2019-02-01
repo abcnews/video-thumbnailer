@@ -1,6 +1,6 @@
 {
 	"name": "video-thumbnailer",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "Video thumbnails from Core Media documents",
 	"license": "MIT",
 	"private": true,
