@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+}
+
+a {
+  display: block;
+}
+
+a > video,
+a::after {
+  width: 100%;
+  height: 100vh;
+}
+
+a > video {
+  vertical-align: top;
+  object-fit: cover;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+}
