@@ -29,8 +29,6 @@ const videoId = (window.location.search.match(/id=(\d+)/) || [])[1];
 const target = (window.location.search.match(/originalLinkTarget=([^&]+)/) || [])[1];
 const isPreviewTarget = target && target.indexOf('nucwed') > -1;
 
-console.log(videoId, target, isPreviewTarget);
-
 if (target) {
   thumbnail.href = target;
   prefetch(target);
