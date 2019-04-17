@@ -42,8 +42,10 @@ if (videoId) {
         return console.error(err);
       }
 
-      // Set video source
-      video.src = item.renditions[0].url;
+      // Set video source (always aim for smallest)
+      video.src = item.renditions.sort((a, b) => {
+        return (a.fileSize || 1) - (b.fileSize || 0);
+      })[0].url;
 
       // Set title
       thumbnail.title = item.captionPlain;
