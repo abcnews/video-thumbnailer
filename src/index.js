@@ -1,4 +1,4 @@
-import capiFetch from '@abcnews/capi-fetch';
+import terminusFetch from '@abcnews/terminus-fetch';
 import './styles.css';
 
 function prefetch(url) {
@@ -35,24 +35,24 @@ if (target) {
 }
 
 if (videoId) {
-  capiFetch(
-    videoId,
+  terminusFetch(
+    { id: videoId, type: 'video' },
     (err, item) => {
       if (err) {
         return console.error(err);
       }
 
       // Set video source (always aim for smallest)
-      video.src = item.renditions.sort((a, b) => {
-        return (a.fileSize || 1) - (b.fileSize || 0);
+      video.src = item.media.video.renditions.files.sort((a, b) => {
+        return (a.size || 1) - (b.size || 0);
       })[0].url;
 
       // Set title
-      thumbnail.title = item.captionPlain;
+      thumbnail.title = item.title;
 
       // Set fallback image, in case device can't play video
-      if (item.thumbnailLink && item.thumbnailLink.media && item.thumbnailLink.media.length) {
-        const image = item.thumbnailLink.media.find(x => x.url.indexOf('16x9-large') > -1);
+      if (item._embedded.mediaThumbnail) {
+        const image = item._embedded.mediaThumbnail.complete.find(x => x.url.indexOf('16x9-large') > -1);
 
         if (image) {
           thumbnail.style.backgroundImage = `url(${image.url})`;
