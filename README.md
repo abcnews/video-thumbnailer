@@ -12,6 +12,16 @@ If the query string contains a value for `originalLinkTarget` (which `news-core`
 
 `ARTICLE_CMID_OR_POSITION(image-full,interactive,data:{"i":"video-thumbnailer/latest/?id=VIDEO_CMID"})`
 
+## Development
+
+Every release also deploys to /res/sites/news-projects/video-thumbnailer/latest/ on ContentFTP, so we need to bust a coupld of URLs in our Akamai cache, to ensure that resources referenced by the above volume setting are not stale:
+
+```
+https://www.abc.net.au/res/sites/news-projects/video-thumbnailer/latest/
+https://www.abc.net.au/res/sites/news-projects/video-thumbnailer/latest/index.html
+https://www.abc.net.au/res/sites/news-projects/video-thumbnailer/latest/index.js
+```
+
 ## Authors
 
 - Colin Gourlay ([Gourlay.Colin@abc.net.au](mailto:Gourlay.Colin@abc.net.au))
