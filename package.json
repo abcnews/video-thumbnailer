@@ -1,33 +1,33 @@
 {
-  "name": "video-thumbnailer",
-  "version": "1.4.0",
-  "description": "Video thumbnails from Core Media documents",
-  "license": "MIT",
-  "private": true,
-  "contributors": [
-    "Colin Gourlay <Gourlay.Colin@abc.net.au>"
-  ],
-  "aunty": {
-    "type": "basic",
-    "serve": {
-      "https": false
-    },
-    "deploy": [
-      {
-        "to": "/www/res/sites/news-projects/<name>/<id>"
-      },
-      {
-        "to": "/www/res/sites/news-projects/<name>/latest"
-      }
-    ]
-  },
-  "scripts": {
-    "start": "aunty serve"
-  },
-  "devDependencies": {
-    "@abcnews/aunty": "^10.9.1"
-  },
-  "dependencies": {
-    "@abcnews/terminus-fetch": "^1.2.1"
-  }
+	"name": "video-thumbnailer",
+	"version": "1.5.0",
+	"description": "Video thumbnails from Core Media documents",
+	"license": "MIT",
+	"private": true,
+	"contributors": [
+		"Colin Gourlay <Gourlay.Colin@abc.net.au>"
+	],
+	"aunty": {
+		"type": "basic",
+		"serve": {
+			"https": false
+		},
+		"deploy": [
+			{
+				"to": "/www/res/sites/news-projects/<name>/<id>"
+			},
+			{
+				"to": "/www/res/sites/news-projects/<name>/latest"
+			}
+		]
+	},
+	"scripts": {
+		"start": "aunty serve"
+	},
+	"devDependencies": {
+		"@abcnews/aunty": "^10.9.1"
+	},
+	"dependencies": {
+		"@abcnews/terminus-fetch": "^1.2.1"
+	}
 }
